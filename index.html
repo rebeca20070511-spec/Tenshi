@@ -1220,11 +1220,13 @@ $("clear-youtube").addEventListener("click", () => {
   }
 });
 
+
 $("today-date").textContent = new Date().toLocaleDateString("pt-BR", {
   day: "2-digit",
   month: "long",
   year: "numeric"
-  
+});
+
 const frame = $("youtube-frame");
 
 function controlarYouTube(func, args = []) {
@@ -1268,8 +1270,6 @@ document.querySelectorAll(".track-item").forEach((track, index) => {
   });
 });
 
-});
-
 try {
   const savedTheme = localStorage.getItem("tenshi-theme");
   if (savedTheme === "dark") setTheme("dark");
@@ -1278,8 +1278,9 @@ try {
 }
 
 const playlistPublica = "https://www.youtube.com/watch?v=6uGD6Oh6pSw&list=PLf8ZUczaKWf8";
-
 loadYouTube(playlistPublica);
+
+renderGallery();
 
 renderGallery();
 </script>
