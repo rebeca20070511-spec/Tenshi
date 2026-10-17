@@ -670,8 +670,10 @@ function closeLightbox() {
 
 function savePreferences() {
   try {
-    localStorage.setItem("tenshi-theme", document.body.classList.contains("dark") ? "dark" : "gray");
-    localStorage.setItem("tenshi-youtube", $("youtube-url").value.trim());
+    localStorage.setItem(
+      "tenshi-theme",
+      document.body.classList.contains("dark") ? "dark" : "gray"
+    );
   } catch (error) {
     console.warn("Não foi possível salvar as preferências neste navegador.", error);
   }
@@ -902,15 +904,14 @@ $("today-date").textContent = new Date().toLocaleDateString("pt-BR", {
 try {
   const savedTheme = localStorage.getItem("tenshi-theme");
   if (savedTheme === "dark") setTheme("dark");
-
-  const savedYoutube = localStorage.getItem("tenshi-youtube");
-  if (savedYoutube) {
-    $("youtube-url").value = savedYoutube;
-    loadYouTube(savedYoutube);
-  }
 } catch (error) {
   console.warn("Preferências locais indisponíveis.", error);
 }
+
+const playlistPublica =
+  "https://www.youtube.com/watch?v=6uGD6Oh6pSw&list=PLf8ZUczaKWf8";
+
+loadYouTube(playlistPublica);
 
 renderGallery();
 </script>
