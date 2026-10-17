@@ -494,29 +494,59 @@ footer {
 </div>
 
 <!-- Player discreto do YouTube -->
+
 <div class="player">
   <div id="player-panel">
-    <iframe id="youtube-frame"
-      title="Player do YouTube"
-      src="about:blank"
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-    <p class="player-help">
-      Cole o link de um vídeo ou de uma playlist do YouTube.
-      O link será salvo neste navegador.
-    </p>
-    <div class="player-setup">
-      <input id="youtube-url" type="url" placeholder="Link do YouTube..." aria-label="Link do YouTube">
-      <button id="save-youtube">Salvar</button>
+    <div class="music-card">
+      <div class="music-cover">
+        <span>꒰ঌ</span>
+        <strong>天使</strong>
+        <span>໒꒱</span>
+      </div>
+
+      <div class="music-info">
+        <span class="music-label">NOW PLAYING</span>
+        <h3 id="music-title">Tenshi playlist</h3>
+        <p id="music-artist">Your personal soundtrack</p>
+
+        <div class="music-controls">
+          <button id="player-prev" type="button" aria-label="Faixa anterior">|◀</button>
+          <button id="player-play" type="button" aria-label="Reproduzir">▶</button>
+          <button id="player-next" type="button" aria-label="Próxima faixa">▶|</button>
+        </div>
+      </div>
     </div>
-    <button id="clear-youtube" style="margin-top:8px;padding:6px 9px">Remover player</button>
+
+    <div class="playlist-heading">
+      <span>Playlist</span>
+      <span>꒰ ♡ ꒱</span>
+    </div>
+
+    <div id="playlist-tracks" class="playlist-tracks">
+      <p>Carregando suas músicas...</p>
+    </div>
+<div class="player-setup" hidden>
+  <input id="youtube-url" type="url" value="https://www.youtube.com/watch?v=6uGD6Oh6pSw&list=PLf8ZUczaKWf8">
+  <button id="save-youtube" type="button">Salvar</button>
+</div>
+<button id="clear-youtube" type="button" hidden>Remover player</button>
+<p class="player-help" hidden>Playlist do YouTube</p>
+    <div class="youtube-hidden">
+      <iframe id="youtube-frame"
+        title="Player do YouTube"
+        src="about:blank"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
+
   <div class="player-main">
     <button id="player-toggle" title="Abrir player do YouTube">♫</button>
     <span>now playing?</span>
   </div>
 </div>
+
 
 <!-- Visualização ampliada da imagem -->
 <div class="overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
