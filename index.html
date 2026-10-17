@@ -556,20 +556,26 @@ footer {
   opacity: 0.6;
 }
 
+
 .youtube-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0.01;
-  pointer-events: none;
+  position: static;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  opacity: 1;
+  pointer-events: auto;
+  margin-top: 16px;
 }
 
 .youtube-hidden iframe {
-  width: 1px;
-  height: 1px;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  min-height: 220px;
   border: 0;
 }
+
 
 @media (max-width: 380px) {
   .music-card {
