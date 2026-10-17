@@ -1058,7 +1058,10 @@ function loadYouTube(url) {
     return;
   }
 
-  $("youtube-frame").src = embedUrl;
+  const playerUrl = new URL(embedUrl);
+playerUrl.searchParams.set("enablejsapi", "1");
+playerUrl.searchParams.set("origin", window.location.origin);
+$("youtube-frame").src = playerUrl.toString();
   $("youtube-url").value = cleaned;
 
   try {
@@ -1221,6 +1224,50 @@ $("today-date").textContent = new Date().toLocaleDateString("pt-BR", {
   day: "2-digit",
   month: "long",
   year: "numeric"
+  
+const frame = $("youtube-frame");
+
+function controlarYouTube(func, args = []) {
+  frame.contentWindow.postMessage(
+    JSON.stringify({
+      event: "command",
+      func: func,
+      args: args
+    }),
+    "*"
+  );
+}
+
+let tocando = false;
+
+$("player-play").addEventListener("click", () => {
+  controlarYouTube(tocando ? "pauseVideo" : "playVideo");
+  tocando = !tocando;
+  $("player-play").textContent = tocando ? "Ⅱ" : "▶";
+});
+
+$("player-next").addEventListener("click", () => {
+  controlarYouTube("nextVideo");
+  tocando = true;
+  $("player-play").textContent = "Ⅱ";
+});
+
+$("player-prev").addEventListener("click", () => {
+  controlarYouTube("previousVideo");
+  tocando = true;
+  $("player-play").textContent = "Ⅱ";
+});
+
+document.querySelectorAll(".track-item").forEach((track, index) => {
+  track.style.cursor = "pointer";
+
+  track.addEventListener("click", () => {
+    controlarYouTube("playVideoAt", [index]);
+    tocando = true;
+    $("player-play").textContent = "Ⅱ";
+  });
+});
+
 });
 
 try {
